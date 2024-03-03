@@ -3,7 +3,7 @@ In this repo we will be adding a code to get the list of customers which are goi
 
 ## Technical architecture / flow - 
 
-![image](https://github.com/GenAIPractice/getLoosingCustomers/assets/161993711/129cca8c-c9da-41e5-adfd-8e3f0098b93f)
+![image](https://github.com/GenAIPractice/getLoosingCustomers/assets/161993711/d3847342-ac09-4f44-ae26-f3e050f8a0c5)
 
 
 
