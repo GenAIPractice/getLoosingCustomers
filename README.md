@@ -1,5 +1,11 @@
-## getLoosingCustomers
+## GetLoosingCustomers
 In this repo we will be adding a code to get the list of customers which are going to miss their rewards
+
+## Technical architecture / flow - 
+
+![image](https://github.com/GenAIPractice/getLoosingCustomers/assets/161993711/129cca8c-c9da-41e5-adfd-8e3f0098b93f)
+
+
 
 ## We will be using below components - 
   - CSVLoader class from langchain
