@@ -18,7 +18,7 @@ In this repo we will be adding a code to get the list of customers which are goi
 ## Installation and Local setup
   - Install git on local system
   - Install python 3.11 <DO NOT INSTALL LATEST, I faced lot of copmatibility issues with latest version>
-  - git clone https://github.com/GenAIPractice/getLoosingCustomers/edit/main/README.md
+  - git clone https://github.com/GenAIPractice/getLoosingCustomers 
   - CD into the directory where you cloned the project and run below command to install all required tools/models for this project
       pip: pip install -r requirements.txt
   - Acquire an api key through makersuite.google.com and put it in .env file
