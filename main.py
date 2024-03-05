@@ -1,12 +1,14 @@
 import streamlit as st
-from langchain_helper import get_eligible_customer_chain, create_vector_db
 
-st.title("Offer eligibility 🌱")
-btn = st.button("Create Knowledgebase")
-if btn:
-    create_vector_db()
+from emailHelper import send_custom_email
+from langchain_helper import get_eligible_customer_chain
+
+st.title("Missing Customers..")
 
 question = st.text_input("Question: ")
+
+if st.button:
+    send_custom_email()
 
 if question:
     chain = get_eligible_customer_chain()
@@ -14,6 +16,7 @@ if question:
 
     st.header("Answer")
     st.write(response["result"])
+    st.button("Send Email")
 
 
 
