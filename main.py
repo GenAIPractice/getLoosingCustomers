@@ -4,7 +4,7 @@ from emailHelper import send_custom_email
 from langchain_helper import get_eligible_customer_chain
 
 st.title("Missing Customers..")
-
+#create_vector_db()
 question = st.text_input("Question: ")
 
 if st.button:

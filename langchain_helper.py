@@ -7,36 +7,48 @@ from langchain.chains import RetrievalQA
 import os
 
 from dotenv import load_dotenv
+
 load_dotenv()  # take environment variables from .env (especially openai api key)
 
 # Create Google Palm LLM model
-llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.1)
+llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.1, max_output_tokens=100,
+                 max_results=100)
+
 # # Initialize instructor embeddings using the Hugging Face model
 instructor_embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-large")
-vectordb_file_path = "D:/GenAIInstallation/offereligibility/faiss_index"
+vectordb_file_path = "D:/GenAIInstallation/Original/faiss_index"
 
-def create_vector_db():
-    # Load data from FAQ sheet
-    loader = CSVLoader(file_path='sample1.csv', source_column="CustomerName")
+
+# def create_vector_db():
+#     # Load data from FAQ sheet
+#     loader = CSVLoader(file_path='D:/GenAIInstallation/Original/CustomerOfferData.csv', source_column="CustomerId")
+#     data = loader.load()
+#
+#     # Create a FAISS instance for vector database from 'data'
+#     vectordb = FAISS.from_documents(documents=data,
+#                                     embedding=instructor_embeddings)
+#
+#     # Save vector database locally
+#     vectordb.save_local(vectordb_file_path)
+
+
+def get_eligible_customer_chain():
+
+    loader = CSVLoader(file_path='D:/GenAIInstallation/Original/CustomerOfferData.csv', source_column="CustomerId")
     data = loader.load()
 
     # Create a FAISS instance for vector database from 'data'
     vectordb = FAISS.from_documents(documents=data,
                                     embedding=instructor_embeddings)
-
-    # Save vector database locally
-    vectordb.save_local(vectordb_file_path)
-
-
-def get_eligible_customer_chain():
     # Load the vector database from the local folder
-    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings)
+    #vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings)
 
     # Create a retriever for querying the vector database
-    retriever = vectordb.as_retriever(score_threshold=0.7)
+    retriever = vectordb.as_retriever(score_threshold=0.7, search_kwargs={"k": 1000})
 
     prompt_template = """Given the following context and a question, generate an answer based on this context only.
     In the answer try to provide as much text as possible from the source document context without making much changes.
+    Give the reasoning and suggestions based on data available.
     If the answer is not found in the context, kindly state "I don't know." Don't try to make up an answer.
 
     CONTEXT: {context}
@@ -54,7 +66,12 @@ def get_eligible_customer_chain():
                                         return_source_documents=True,
                                         chain_type_kwargs={"prompt": PROMPT})
 
+    # answer = chain.get("answer", "")
+    # print("Answer is :", answer)
+    # suggestions = chain.get("source_documents", [])
+    # print("Suggestion is :", suggestions)
     return chain
+
 
 if __name__ == "__main__":
     create_vector_db()

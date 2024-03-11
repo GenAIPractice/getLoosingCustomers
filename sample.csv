@@ -1,3 +1,20 @@
-CustomerName,SLA,RedemptionStatus,CompetingOffer
+CustomerName,MissingSLA,RedemptionStatus,CompetingOffer
 Alice,"Yes, missing 30 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
 Bob,"Yes, missing 30 days SLA",Redemption incomplete,No
+Alice1,"Yes, missing 30 days SLA",Redemption incomplete,No
+Alice2,"Yes, missing 30 days SLA",Redemption incomplete,No
+Alice3,"Yes, missing 30 days SLA",Redemption incomplete,No
+Alice4,"Yes, missing 45 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
+Alice5,"Yes, missing 45 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
+Alice6,"Yes, missing 45 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
+Alice7,"Yes, missing 45 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
+Alice8,"Yes, missing 45 days SLA",Redemption completed,"Yes, getting better offer from competative bank/s"
+Alice9,No,No,Not Sure
+Alice10,No,No,Not Sure
+Alice11,No,No,Not Sure
+Alice12,No,No,Not Sure
+Alice13,No,No,Not Sure
+Alice14,No,No,Not Sure
+Alice15,Yes,Yes,Yes
+Alice16,Yes,Yes,Yes
+Alice17,Yes,Yes,Yes
